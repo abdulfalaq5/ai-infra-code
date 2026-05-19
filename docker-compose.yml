@@ -1,0 +1,50 @@
+services:
+  litellm:
+    image: ghcr.io/berriai/litellm:main
+    container_name: litellm
+
+    command:
+      - "--config"
+      - "/app/config.yaml"
+
+    ports:
+      - "9400:9400"
+
+    volumes:
+      - ./litellm/config.yaml:/app/config.yaml
+
+    environment:
+      OPENAI_API_KEY: ${OPENAI_API_KEY}
+      OPENROUTER_API_KEY: ${OPENROUTER_API_KEY}
+      SUMOPOD_API_KEY: ${SUMOPOD_API_KEY}
+
+    networks:
+      - infra_net
+
+  opencode:
+    build: ./opencode
+    container_name: opencode
+
+    stdin_open: true
+    tty: true
+
+    user: "${UID}:${GID}"
+
+    working_dir: /workspace/apps
+
+    volumes:
+      - /home/falaq/Documents:/workspace/apps
+
+    environment:
+      OPENAI_API_KEY: dummy
+      OPENAI_BASE_URL: http://litellm:9400/v1
+
+    depends_on:
+      - litellm
+
+    networks:
+      - infra_net
+
+networks:
+  infra_net:
+    external: true

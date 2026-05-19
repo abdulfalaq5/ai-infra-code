@@ -1,0 +1,20 @@
+model_list:
+
+  # OPENAI
+  - model_name: gpt-4.1
+    litellm_params:
+      model: openai/gpt-4.1
+      api_key: os.environ/OPENAI_API_KEY
+
+  # OPENROUTER
+  - model_name: deepseek-free
+    litellm_params:
+      model: openrouter/deepseek/deepseek-chat:free
+      api_key: os.environ/OPENROUTER_API_KEY
+
+  # SUMOPOD
+  - model_name: qwen-sumopod
+    litellm_params:
+      model: openai/Qwen/Qwen3-Coder
+      api_base: https://ai.sumopod.com/v1
+      api_key: os.environ/SUMOPOD_API_KEY
