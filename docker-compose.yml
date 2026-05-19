@@ -3,15 +3,19 @@ services:
     image: ghcr.io/berriai/litellm:main
     container_name: litellm
 
+    entrypoint: [ "python", "-m", "litellm.proxy.proxy_cli" ]
+
     command:
       - "--config"
       - "/app/config.yaml"
+      - "--port"
+      - "4000"
 
     ports:
       - "9400:4000"
 
     volumes:
-      - ./litellm/config.yaml:/app/config.yaml
+      - ./litellm/config.yaml:/app/config.yaml:ro
 
     extra_hosts:
       - "host.docker.internal:host-gateway"
@@ -20,6 +24,8 @@ services:
       OPENAI_API_KEY: ${OPENAI_API_KEY}
       OPENROUTER_API_KEY: ${OPENROUTER_API_KEY}
       SUMOPOD_API_KEY: ${SUMOPOD_API_KEY}
+
+    restart: unless-stopped
 
     networks:
       - infra_net
