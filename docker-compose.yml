@@ -48,6 +48,9 @@ services:
       OPENAI_API_KEY: dummy
       OPENAI_BASE_URL: http://litellm:4000/v1
 
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+
     depends_on:
       - litellm
 
