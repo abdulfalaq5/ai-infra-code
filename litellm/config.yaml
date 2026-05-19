@@ -64,22 +64,16 @@ model_list:
   # Tidak keluar server, full lokal
   ######################################################################
 
-  # OLLAMA QWEN CODER
+  # OLLAMA QWEN CODER 7B
   - model_name: local-qwen-coder
     litellm_params:
-      model: ollama/qwen2.5-coder:14b
+      model: ollama/qwen2.5-coder:7b
       api_base: http://host.docker.internal:11434
 
-  # OLLAMA DEEPSEEK CODER
-  - model_name: local-deepseek-coder
+  # OLLAMA PHI3 MINI
+  - model_name: local-phi3-mini
     litellm_params:
-      model: ollama/deepseek-coder-v2
-      api_base: http://host.docker.internal:11434
-
-  # OLLAMA LLAMA
-  - model_name: local-llama
-    litellm_params:
-      model: ollama/llama3.1:8b
+      model: ollama/phi3:mini
       api_base: http://host.docker.internal:11434
 
   ######################################################################
