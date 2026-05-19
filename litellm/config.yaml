@@ -1,20 +1,100 @@
 model_list:
 
-  # OPENAI
-  - model_name: gpt-4.1
+  ######################################################################
+  # PREMIUM MODELS
+  # Akurasi & reasoning terbaik
+  ######################################################################
+
+  # OPENAI GPT-4.1
+  - model_name: premium-gpt41
     litellm_params:
       model: openai/gpt-4.1
       api_key: os.environ/OPENAI_API_KEY
 
-  # OPENROUTER
-  - model_name: deepseek-free
+  # OPENAI GPT-4o
+  - model_name: premium-gpt4o
+    litellm_params:
+      model: openai/gpt-4o
+      api_key: os.environ/OPENAI_API_KEY
+
+  ######################################################################
+  # CHEAP & GOOD MODELS
+  # Bagus untuk coding harian dan lebih murah
+  ######################################################################
+
+  # OPENROUTER DEEPSEEK FREE
+  - model_name: cheap-deepseek-free
     litellm_params:
       model: openrouter/deepseek/deepseek-chat:free
       api_key: os.environ/OPENROUTER_API_KEY
 
-  # SUMOPOD
-  - model_name: qwen-sumopod
+  # OPENROUTER QWEN CODER
+  - model_name: cheap-qwen-coder
+    litellm_params:
+      model: openrouter/qwen/qwen-2.5-coder-32b-instruct
+      api_key: os.environ/OPENROUTER_API_KEY
+
+  # OPENROUTER LLAMA
+  - model_name: cheap-llama
+    litellm_params:
+      model: openrouter/meta-llama/llama-3.3-70b-instruct
+      api_key: os.environ/OPENROUTER_API_KEY
+
+  ######################################################################
+  # SUMOPOD PRIVATE MODELS
+  # Source code tetap lewat provider internal kamu
+  ######################################################################
+
+  # SUMOPOD QWEN CODER
+  - model_name: private-qwen-coder
     litellm_params:
       model: openai/Qwen/Qwen3-Coder
       api_base: https://ai.sumopod.com/v1
       api_key: os.environ/SUMOPOD_API_KEY
+
+  # SUMOPOD DEEPSEEK
+  - model_name: private-deepseek
+    litellm_params:
+      model: openai/DeepSeek-R1
+      api_base: https://ai.sumopod.com/v1
+      api_key: os.environ/SUMOPOD_API_KEY
+
+  ######################################################################
+  # OLLAMA LOCAL MODELS
+  # Tidak keluar server, full lokal
+  ######################################################################
+
+  # OLLAMA QWEN CODER
+  - model_name: local-qwen-coder
+    litellm_params:
+      model: ollama/qwen2.5-coder:14b
+      api_base: http://host.docker.internal:11434
+
+  # OLLAMA DEEPSEEK CODER
+  - model_name: local-deepseek-coder
+    litellm_params:
+      model: ollama/deepseek-coder-v2
+      api_base: http://host.docker.internal:11434
+
+  # OLLAMA LLAMA
+  - model_name: local-llama
+    litellm_params:
+      model: ollama/llama3.1:8b
+      api_base: http://host.docker.internal:11434
+
+  ######################################################################
+  # FAST MODELS
+  # Cepat & murah untuk task kecil
+  ######################################################################
+
+  # OPENROUTER MISTRAL
+  - model_name: fast-mistral
+    litellm_params:
+      model: openrouter/mistralai/mistral-7b-instruct
+      api_key: os.environ/OPENROUTER_API_KEY
+
+  # OPENROUTER GEMMA
+  - model_name: fast-gemma
+    litellm_params:
+      model: openrouter/google/gemma-3-27b-it
+      api_key: os.environ/OPENROUTER_API_KEY
