@@ -28,10 +28,35 @@ model_list:
       model: openrouter/deepseek/deepseek-chat:free
       api_key: os.environ/OPENROUTER_API_KEY
 
+  - model_name: free-qwen
+    litellm_params:
+      model: openrouter/qwen/qwen-2.5-72b-instruct:free
+      api_key: os.environ/OPENROUTER_API_KEY
+
   # OPENROUTER QWEN CODER
   - model_name: cheap-qwen-coder
     litellm_params:
       model: openrouter/qwen/qwen-2.5-coder-32b-instruct
+      api_key: os.environ/OPENROUTER_API_KEY
+
+  - model_name: free-llama
+    litellm_params:
+      model: openrouter/meta-llama/llama-3.3-70b-instruct:free
+      api_key: os.environ/OPENROUTER_API_KEY
+
+  - model_name: free-gemma
+    litellm_params:
+      model: openrouter/google/gemma-3-27b-it:free
+      api_key: os.environ/OPENROUTER_API_KEY
+
+  - model_name: free-mistral
+    litellm_params:
+      model: openrouter/mistralai/mistral-7b-instruct:free
+      api_key: os.environ/OPENROUTER_API_KEY
+
+  - model_name: free-deepseek-r1
+    litellm_params:
+      model: openrouter/deepseek/deepseek-r1:free
       api_key: os.environ/OPENROUTER_API_KEY
 
   # OPENROUTER LLAMA
